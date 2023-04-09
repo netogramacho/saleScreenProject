@@ -1,0 +1,13 @@
+<div
+  class="side-dialog-container"
+  [ngClass]="{ open: isOpen, closing: isClosing }"
+>
+  <div class="side-dialog-content">
+    <ng-content></ng-content>
+  </div>
+</div>
+<div
+  class="overlay"
+  (click)="close()"
+  [ngClass]="{ closeOverlay: !isOpen }"
+></div>

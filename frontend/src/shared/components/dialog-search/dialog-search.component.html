@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Search Product</h2>
+<mat-dialog-content class="mat-size">
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput name="searchTerm" [(ngModel)]="searchTerm" />
+  </mat-form-field>
+  <div>
+    <div class="card">
+      <div class="row">
+        <div class="column">Code</div>
+        <div class="column">Name</div>
+        <div class="column">Description</div>
+        <div class="column">Price</div>
+        <div class="column">Tax</div>
+      </div>
+    </div>
+    <ng-container *ngFor="let product of data | filter : searchTerm">
+      <app-product-search
+        (click)="onCloseDialog(product)"
+        [product]="product"
+      ></app-product-search>
+    </ng-container>
+  </div>
+</mat-dialog-content>

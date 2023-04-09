@@ -1,0 +1,12 @@
+RewriteEngine On
+
+#Production rules
+#RewriteCond %{REQUEST_URI} !^/api/index.php
+#RewriteCond %{REQUEST_URI} ^/api/
+#RewriteRule ^(.*)$ /api/index.php [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*)$ /index.html [L]
+
+#Local rules
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

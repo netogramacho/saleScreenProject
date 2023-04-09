@@ -1,0 +1,24 @@
+.mat-size {
+  width: 60vw;
+  height: 60vh;
+}
+
+.card {
+  // border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column {
+  flex-basis: 20%;
+  text-align: center;
+}

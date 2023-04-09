@@ -1,0 +1,102 @@
+<div class="body">
+  <div>
+    <button class="mb-20" mat-raised-button color="primary" (click)="prepareAddProduct()">
+      Add Product
+    </button>
+  </div>
+  <table mat-table [dataSource]="products" class="mat-elevation-z8">
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef>Code</th>
+      <td mat-cell *matCellDef="let element">{{ element.productId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="productPrice">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.productPrice | currency }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="taxValue">
+      <th mat-header-cell *matHeaderCellDef>Tax</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.taxValue | currency }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="editProduct(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="deleteProduct(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<app-side-dialog [isOpen]="isDialogOpen" (onClose)="isDialogOpen = false">
+  <h2>Product</h2>
+  <form>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Product name</mat-label>
+      <input
+        matInput
+        name="productName"
+        [(ngModel)]="currProduct.productName"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Select product type:</mat-label>
+      <mat-select name="productType" [(ngModel)]="currProduct.categoryId">
+        <mat-option *ngFor="let cat of categories" [value]="cat.categoryId">
+          {{ cat.categoryName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Product description</mat-label>
+      <input
+        matInput
+        name="productDescription"
+        [(ngModel)]="currProduct.productDescription"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Product price</mat-label>
+      <input
+        matInput
+        name="productPrice"
+        [(ngModel)]="currProduct.productPrice"
+      />
+    </mat-form-field>
+  </form>
+  <button (click)="saveProduct()" mat-raised-button color="primary">
+    Save
+  </button>
+</app-side-dialog>
+
+<div class="spinner-overlay" *ngIf="showSpinner">
+  <mat-spinner class="spinner" [diameter]="50" [strokeWidth]="5"></mat-spinner>
+</div>

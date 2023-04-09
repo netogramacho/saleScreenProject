@@ -1,0 +1,14 @@
+<div class="product">
+  <div class="product-details">
+    <h3>{{ product.productName }}</h3>
+    <p>{{ product.productDescription }}</p>
+    <p>Price: {{ product.productPrice | currency }}</p>
+    <p>Tax: {{ product.taxValue | currency }}</p>
+  </div>
+  <div class="product-quantity">
+    <button (click)="decrementQuantity()" class="quantity-btn minus">-</button>
+    <input type="text" class="quantity-input" [value]="quantity" disabled />
+    <button (click)="incrementQuantity()" class="quantity-btn plus">+</button>
+  </div>
+  <button (click)="deleteProduct()" class="remove-btn">Remove</button>
+</div>

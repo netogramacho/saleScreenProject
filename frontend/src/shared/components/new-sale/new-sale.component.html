@@ -1,0 +1,29 @@
+<div class="body">
+  <button class="mb-20" mat-raised-button color="primary" (click)="openFindProduct()">
+    Add Product
+  </button>
+
+  <h2>Products</h2>
+
+  <div *ngIf="!currSale.saleProducts.length" class="total">
+    <p>This sale is empty.</p>
+  </div>
+  <ng-container *ngFor="let saleProduct of currSale.saleProducts">
+    <app-cart-product
+      [product]="saleProduct.product"
+      [quantity]="saleProduct.quantity"
+      (increment)="incrementQuantity($event)"
+      (decrement)="decrementQuantity($event)"
+      (remove)="removeProduct($event)"
+    ></app-cart-product>
+  </ng-container>
+
+  <h2>Total</h2>
+  <div class="total mb-20">
+    <p><span>Total Price: </span>{{ currSale.saleTotal | currency }}</p>
+    <p><span>Total Tax: </span>{{ currSale.saleTax | currency }}</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button (click)="saveSale()" color="success" mat-raised-button>Done</button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "/products-api": {
+    "target": "http://localhost:80",
+    "changeOrigin": true
+  },
+  "/category-api": {
+    "target": "http://localhost:80",
+    "changeOrigin": true
+  },
+  "/sales-api": {
+    "target": "http://localhost:80",
+    "changeOrigin": true
+  }
+}
