@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, PercentPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';

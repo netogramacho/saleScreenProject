@@ -6,7 +6,6 @@ import { Product } from 'src/shared/interfaces/product';
 import { ProductService } from 'src/shared/services/product.service';
 import { Sale } from 'src/shared/interfaces/sale';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SpinnerService } from 'src/shared/services/SpinnerService.service';
 import { SaleService } from 'src/shared/services/sale.service';
 
 @Component({
